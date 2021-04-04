@@ -1,6 +1,9 @@
 package model
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type Cost struct {
 	MaxSpend    float32
@@ -36,6 +39,7 @@ var fitsBudgetErr = errors.New("This costs too much money")
 var alreadyAddedErr = errors.New("This was already added")
 
 func (c *Cost) AddIngredient(name string, price float32) error {
+	fmt.Println(c)
 	if c.CurrentTotal()+price > c.MaxSpend {
 		return fitsBudgetErr
 	}
